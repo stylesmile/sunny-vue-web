@@ -62,11 +62,13 @@ export default {
   },
   methods: {
     handleLogin () {
+      debugger
       // 表单验证
       this.$refs.userInfo.validate(valid => {
+        debugger
         if (valid) {
           this.loading = true
-          this.$store.dispatch('/user/login', this.userInfo).then(() => {
+          this.$store.dispatch('Login', this.userInfo).then(() => {
             this.loading = false
             this.$router.push({ path: this.redirect || '/' })
           }).catch(() => {

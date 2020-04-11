@@ -24,11 +24,11 @@ if (process.env.npm_config_preview || rawArgv.includes('--preview')) {
     })
   )
 
-  app.use('/api', proxy({
-    target: host,
-    changeOrigin: true,
-    pathRewrite: { "^/dev-api" : "/art/api/action" }
-  }));
+  // app.use('/api', proxy({
+  //   target: host,
+  //   changeOrigin: true,
+  //   pathRewrite: { "^/dev-api" : "/art/api/action" }
+  // }));
 
   app.listen(port, function () {
     console.log(chalk.green(`> Preview at  http://localhost:${port}${publicPath}`))

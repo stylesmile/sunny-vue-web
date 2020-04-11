@@ -3,7 +3,7 @@ import store from './store'
 import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-import { getToken } from '@/utils/auth' // get token from cookie
+import {getToken, getUserInfo} from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
@@ -31,10 +31,16 @@ router.beforeEach(async(to, from, next) => {
         next()
       } else {
         try {
+          debugger
           // get user info
-          await store.dispatch('user/getInfo')
-
+          const user = getUserInfo()
+          console.log(user)
+          const avatar = 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
+          store.commit('SET_NAME', user.nickname)
+          store.commit('SET_AVATAR', avatar)
+          // await store.dispatch('user/getInfo')
           next()
+          debugger
         } catch (error) {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')

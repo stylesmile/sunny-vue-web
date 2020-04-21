@@ -1,11 +1,18 @@
+import variables from '@/assets/styles/element-variables.scss'
 import defaultSettings from '@/settings'
 
-const { showSettings, fixedHeader, sidebarLogo } = defaultSettings
+const { tagsView, fixedHeader, sidebarLogo, uniqueOpened, showFooter, footerTxt, caseNumber } = defaultSettings
 
 const state = {
-  showSettings: showSettings,
+  theme: variables.theme,
+  showSettings: false,
+  tagsView: tagsView,
   fixedHeader: fixedHeader,
-  sidebarLogo: sidebarLogo
+  sidebarLogo: sidebarLogo,
+  uniqueOpened: uniqueOpened,
+  showFooter: showFooter,
+  footerTxt: footerTxt,
+  caseNumber: caseNumber
 }
 
 const mutations = {

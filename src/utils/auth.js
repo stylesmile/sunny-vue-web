@@ -1,24 +1,18 @@
 import Cookies from 'js-cookie'
+import Config from '@/settings'
 
-const TokenKey = 'sun_vue_token'
-const UserInfoKey = 'sun_vue_token_user'
+const TokenKey = Config.TokenKey
 
 export function getToken() {
   return Cookies.get(TokenKey)
 }
 
-export function setToken(token) {
-  return Cookies.set(TokenKey, token)
+export function setToken(token, rememberMe) {
+  if (rememberMe) {
+    return Cookies.set(TokenKey, token, { expires: Config.tokenCookieExpires })
+  } else return Cookies.set(TokenKey, token)
 }
 
 export function removeToken() {
   return Cookies.remove(TokenKey)
-}
-
-export function setUserInfo(user) {
-  return Cookies.set(UserInfoKey, user)
-}
-
-export function getUserInfo() {
-  return Cookies.get(UserInfoKey)
 }
